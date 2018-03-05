@@ -10,7 +10,9 @@ Simple small, but so powerful:-)
 ## Installation
 You can install eze-cli globally or locally. Prefered way is globally
 
-yarn global
 
+```
+yarn global add eze-cli
+```
 
 ## Usage
