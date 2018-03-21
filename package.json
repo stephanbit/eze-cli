@@ -27,7 +27,7 @@
     "start": "node bin/eze.js",
     "test": "node_modules/.bin/ava tests/**/*.test.js --verbose",
     "test:watch": "node_modules/.bin/ava --verbose --watch",
-    "cover": "node_modules/.bin/nyc yarn test"
+    "cover": "node_modules/.bin/nyc yarn test && nyc report --reporter=text-lcov | coveralls"
   },
   "keywords": [
     "es6",
@@ -40,6 +40,7 @@
   ],
   "directories": {},
   "devDependencies": {
+    "coveralls": "^3.0.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-babel": "^6.1.2",
     "gulp-jshint": "^1.4.0",
