@@ -7,15 +7,22 @@
   <meta name="description" content="Smallest cli to use gulp tasks runner as generator">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <script src="//unpkg.com/docsify-edit-on-github@1.0.1/index.js"></script>
 </head>
 <body>
   <div id="app"></div>
   <script>
     window.$docsify = {
       name: 'eze-cli',
-      repo: 'https://github.com/stephanbit/eze-cli'
+      repo: 'https://github.com/stephanbit/eze-cli',
+      search: true,
+      coverpage: true,
+      plugins: [
+        EditOnGithubPlugin.create('https://github.com/stephanbit/eze-cli/blob/master/docs/')
+      ]
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
 </body>
 </html>
