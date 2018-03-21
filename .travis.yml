@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "node"
+  - "4"
+deploy:
+  provider: npm
+  email: "stephan.bitomsky@gmail.com"
+  api_key: "766b9c66-ea4c-47fb-b31f-a4d39fedee42"
+  on:
+      all_branches: true

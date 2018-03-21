@@ -1,12 +1,7 @@
 #!/usr/bin/env node --harmony
 'use strict';
-/*
- * Next version will support es6
- *
- **/
-//require('babel-register');
 
-const gutil = require('gulp-util');
+var gutil = require('gulp-util');
 var prettyTime = require('pretty-hrtime');
 var glob = require('glob');
 var path = require('path');
@@ -18,6 +13,9 @@ var argv = require('minimist')(process.argv.slice(2));
 var versionFlag = argv.v || argv.version;
 var params = argv._.slice();
 var generatorAndTasks = params.length ? params.shift().split(':') : [];
+
+var red = chalk.red;
+var green = chalk.green;
 
 var generatorName = generatorAndTasks.shift();
 
@@ -39,8 +37,8 @@ var generator = getGenerator(generatorName);
  *
  */
 if (!generator) {
-  log(chalk.red('No generator by name: "' + generatorName + '" was found!'));
-  log(chalk.red('Try installing it with `npm install -g eze-' + generatorName + '` first.'));
+  log(red('No generator by name: "' + generatorName + '" was found!'));
+  log(red('Try installing it with `npm install -g eze-' + generatorName + '` first.'));
   process.exit(1);
 }
 
