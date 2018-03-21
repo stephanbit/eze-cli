@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - "node"
   - "4"
+cache: yarn
 deploy:
   provider: npm
   email: "stephan.bitomsky@gmail.com"
