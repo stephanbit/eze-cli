@@ -1,7 +1,6 @@
 #!/usr/bin/env node --harmony
 'use strict';
 
-var gutil = require('gulp-util');
 var prettyTime = require('pretty-hrtime');
 var glob = require('glob');
 var path = require('path');
@@ -56,21 +55,22 @@ var cli = new Liftoff({
   processTitle: 'eze',
   moduleName: 'gulp',
   configName: 'ezefile',
-  completions: require('../lib/completion')
+  completions: require('../lib/completion'),
+  v8flags: ['--harmony']
 });
 
 /**
  *
  */
 cli.on('require', function(name) {
-  gutil.log('Requiring external module', chalk.magenta(name));
+  log('Requiring external module', chalk.magenta(name));
 });
 
 /**
  *
  */
 cli.on('requireFail', function(name) {
-  gutil.log(chalk.red('Failed to load external module'), chalk.magenta(name));
+  log(chalk.red('Failed to load external module'), chalk.magenta(name));
 });
 
 /**
@@ -82,8 +82,6 @@ cli.launch(handleArguments, argv);
  * @method handleArguments
  */
 function handleArguments(env) {
-  // console.log('env: ' + JSON.stringify(env.argv));
-
   var argv = env.argv;
   var tasksFlag = argv.T || argv.tasks;
   var tasks = argv._;
@@ -93,16 +91,16 @@ function handleArguments(env) {
   if (versionFlag) {
     log(ezePackage.version);
     if (env.modulePackage) {
-      gutil.log(env.modulePackage.version);
+      log(env.modulePackage.version);
     }
     if (generator.pkg.version) {
-      console.log('[' + chalk.green('eze-' + generator.name) + '] ' + generator.pkg.version);
+      log('[' + chalk.green('eze-' + generator.name) + '] ' + generator.pkg.version);
     }
     process.exit(0);
   }
 
   if (!env.modulePath) {
-    gutil.log(chalk.red('No local gulp install found in'), chalk.magenta(generator.path));
+    log(chalk.red('No local gulp install found in'), chalk.magenta(generator.path));
     log(chalk.red('This is an issue with the `eze-' + generator.name + '` generator'));
     process.exit(1);
   }
@@ -123,7 +121,7 @@ function handleArguments(env) {
 
   if (process.cwd() !== env.cwd) {
     process.chdir(env.cwd);
-    gutil.log('Working directory changed to', chalk.magenta(env.cwd));
+    log('Working directory changed to', chalk.magenta(env.cwd));
   }
 
   process.nextTick(function() {
@@ -160,7 +158,7 @@ function logTasks(name, localGulp) {
   tree.label = 'Tasks for generator ' + chalk.magenta(name);
   archy(tree).split('\n').forEach(function(v) {
     if (v.trim().length === 0) return;
-    gutil.log(v);
+    log(v);
   });
 }
 
@@ -182,18 +180,18 @@ function formatError(e) {
  */
 function logEvents(name, gulpInst) {
   gulpInst.on('task_start', function(e) {
-    gutil.log('Starting', "'" + chalk.cyan(name + ':' + e.task) + "'...");
+    log('Starting', "'" + chalk.cyan(name + ':' + e.task) + "'...");
   });
 
   gulpInst.on('task_stop', function(e) {
     var time = prettyTime(e.hrDuration);
-    gutil.log('Finished', "'" + chalk.cyan(name + ':' + e.task) + "'", 'after', chalk.magenta(time));
+    log('Finished', "'" + chalk.cyan(name + ':' + e.task) + "'", 'after', chalk.magenta(time));
   });
 
   gulpInst.on('task_err', function(e) {
     var msg = formatError(e);
     var time = prettyTime(e.hrDuration);
-    gutil.log("'" + chalk.cyan(name + ':' + e.task) + "'", 'errored after', chalk.magenta(time), chalk.red(msg));
+    log("'" + chalk.cyan(name + ':' + e.task) + "'", 'errored after', chalk.magenta(time), chalk.red(msg));
   });
 
   gulpInst.on('task_not_found', function(err) {
