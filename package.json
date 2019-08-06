@@ -1,6 +1,6 @@
 {
   "name": "eze-cli",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "Smallest cli to use gulp tasks runner as generator",
   "bin": {
     "eze": "./bin/eze.js"
@@ -21,6 +21,9 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
+    "beta": "npm version prerelease --preid=beta && npm publish --tag beta",
+    "preversion": "yarn test",
+    "postversion": "git push && git push --tags && rm -rf build/temp",
     "deploy": "npm run version:patch && npm run push && npm publish",
     "version:patch": "npm version patch",
     "push": "git push --tags origin HEAD:master",
@@ -41,11 +44,11 @@
   "directories": {},
   "devDependencies": {
     "coveralls": "^3.0.0",
-    "gulp": "~3.8.6",
     "gulp-babel": "^6.1.2",
     "gulp-jshint": "^1.4.0",
     "jshint": "^2.4.1",
     "mocha": "^1.17.0",
+    "nyc": "^11.6.0",
     "should": "^3.1.0"
   },
   "dependencies": {
@@ -54,9 +57,9 @@
     "babel-register": "^6.26.0",
     "chalk": "^0.4.0",
     "glob": "~4.0.0",
+    "gulp": "^4.0.2",
     "liftoff": "~0.10.0",
     "minimist": "~0.1.0",
-    "nyc": "^11.6.0",
     "pretty-hrtime": "^0.2.0"
   },
   "files": [

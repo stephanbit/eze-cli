@@ -55,8 +55,7 @@ var cli = new Liftoff({
   processTitle: 'eze',
   moduleName: 'gulp',
   configName: 'ezefile',
-  completions: require('../lib/completion'),
-  v8flags: ['--harmony']
+  completions: require('../lib/completion')
 });
 
 /**
@@ -128,7 +127,8 @@ function handleArguments(env) {
     if (tasksFlag) {
       return logTasks(generator.name, gulpInst);
     }
-    gulpInst.start.apply(gulpInst, toRun);
+    
+    gulpInst.task(toRun).unwrap()();
   });
 }
 
