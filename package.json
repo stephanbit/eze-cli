@@ -1,6 +1,6 @@
 {
   "name": "eze-cli",
-  "version": "2.0.0",
+  "version": "2.0.1-beta.0",
   "description": "Smallest cli to use gulp tasks runner as generator",
   "bin": {
     "eze": "./bin/eze.js"
