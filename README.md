@@ -1,4 +1,5 @@
-<p align="center">![image](eze-cli-logo.png)</p>
+<p align="center">![image](eze-cli-logo.png)[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fstephanbit%2Feze-cli.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fstephanbit%2Feze-cli?ref=badge_shield)
+</p>
 <h1 align="center">EZE CLI <small><small><sub><small>1.1.9<small></sub></small></small></h1>
 
 [![Build Status](https://travis-ci.org/stephanbit/eze-cli.svg?branch=master)](https://travis-ci.org/stephanbit/eze-cli)
@@ -32,3 +33,7 @@ output should look like this
 [eze] 1.0.0 Installed generators
 [eze] └── cli (1.0.0)
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fstephanbit%2Feze-cli.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fstephanbit%2Feze-cli?ref=badge_large)
