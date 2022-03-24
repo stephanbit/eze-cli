@@ -59,7 +59,7 @@
     "glob": "~4.0.0",
     "gulp": "^4.0.2",
     "liftoff": "~0.10.0",
-    "minimist": "~0.1.0",
+    "minimist": "~1.2.6",
     "pretty-hrtime": "^0.2.0"
   },
   "files": [
